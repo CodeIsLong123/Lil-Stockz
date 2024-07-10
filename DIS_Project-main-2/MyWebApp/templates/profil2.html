@@ -1,0 +1,58 @@
+{% extends 'base.html' %} {% block title %} Changed {% endblock %} {% block
+content %}
+<br />
+<h1>Stocks</h1>
+<style>
+    .stock {
+        width: 300px;
+        border: 1px solid #ccc;
+        height: 150px;
+        background-color: #eaeaea;
+        padding: 10px;
+        margin: 15px;
+        display: inline-block;
+        border-radius: 5px;
+    }
+
+    h2 {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+
+    p {
+        font-size: 14px;
+        margin-bottom: 5px;
+    }
+</style>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+{% for stock in stocks %}
+<div class="stock stock-item">
+    <h2>{{ stock[1] }}</h2>
+    <p>Stock Value: ${{ stock[2] }}</p>
+    <p>Stock Volume: {{ stock[4] }}</p>
+    
+    <!-- Add more stock information here -->
+</div>
+{% endfor %}
+<script>
+    $(document).ready(function () {
+        // Add click event listener to stock boxes
+        $(".stock-item").click(function () {
+            // Get the stock information from the clicked box
+            var stockName = $(this).find("h2").text();
+            var stockValue = $(this).find("p:eq(0)").text().split(": ")[1];
+            var stockVolume = $(this).find("p:eq(1)").text().split(": ")[1];
+
+            // Perform desired actions with the stock information
+            alert(
+                "Stock Name: " +
+                    stockName +
+                    "\nStock Value: " +
+                    stockValue +
+                    "\nStock Volume: " +
+                    stockVolume
+            );
+        });
+    });
+</script>
+{% endblock %}

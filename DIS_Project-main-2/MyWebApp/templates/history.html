@@ -1,0 +1,94 @@
+{% extends 'base.html' %} {% block title %} History {% endblock %} {% block
+content %}
+<form method="POST">
+    <div class="content">
+        <h1>{{ stock_history.name }}</h1>
+        <br />
+        <h5>
+            On this page, you can see various historical data points of the
+            stock:
+            <strong>{{ stock_history.symbol }}</strong> over the course of the
+            last 30 days.
+        </h5>
+        <br />
+        <div class="table-card card">
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <th>Symbol</th>
+                        <th>Dates</th>
+                        <th>Opens</th>
+                        <th>Closes</th>
+                        <th>Highs</th>
+                        <th>Lows</th>
+                        <th>Volumes</th>
+                    </tr>
+                    <tr>
+                        <td>{{ stock_history.symbol }}</td>
+                        <td class="with-lines">
+                            {% for date in stock_history.date %}
+                            <p>{{ date }}</p>
+                            {% endfor %}
+                        </td>
+                        <td class="with-lines">
+                            {% for open_price in stock_history.opens %}
+                            <p>{{ open_price }}</p>
+                            {% endfor %}
+                        </td>
+                        <td class="with-lines">
+                            {% for close_price in stock_history.closes %}
+                            <p>{{ close_price }}</p>
+                            {% endfor %}
+                        </td>
+                        <td class="with-lines">
+                            {% for high_price in stock_history.highs %}
+                            <p>{{ high_price }}</p>
+                            {% endfor %}
+                        </td>
+                        <td class="with-lines">
+                            {% for low_price in stock_history.lows %}
+                            <p>{{ low_price }}</p>
+                            {% endfor %}
+                        </td>
+                        <td class="with-lines">
+                            {% for volume in stock_history.vols %}
+                            <p>{{ volume }}</p>
+                            {% endfor %}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</form>
+
+<style>
+    .table-card {
+        overflow-x: auto; /* Add scrolling to the table if it doesn't fit in the card */
+    }
+
+    .table {
+        width: 100%;
+        border-collapse: collapse; /* Remove space between table cells */
+    }
+
+    .table th,
+    .table td {
+        padding: 10px;
+        text-align: left;
+    }
+
+    .table th {
+        background-color: #f2f2f2;
+    }
+
+    .with-lines p {
+        border-bottom: 1px solid #e0e0e0;
+        padding: 5px 0;
+    }
+
+    .with-lines p:last-child {
+        border-bottom: none;
+    }
+</style>
+{% endblock %}

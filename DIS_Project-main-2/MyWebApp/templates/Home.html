@@ -1,0 +1,128 @@
+{% extends 'base.html' %} {% block title %}Stock{% endblock %} {% block content
+%}
+<head>
+    <!-- Other head elements... -->
+    <link
+        href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        rel="stylesheet"
+    />
+</head>
+<form method="POST">
+    <div class="header">
+        <div class="logo" style="font-size: 1.75em;">Home</div>
+        <ul class="nav">
+            <li><a href="faves">Watch List</a></li>
+            <li><a href="stocks">Stocks</a></li>
+            <li><a href="about">About</a></li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <div class="content">
+            <div class="winner-cards">
+                {% if winners %}
+                <h2>Top 5 Favorite Stocks</h2>
+                <p>Based on other users Watchlist</p>
+                {% for winner in winners %}
+                <div class="card">
+                    <i class="material-icons">star_border</i>
+                    <h3>{{ winner[0] }}</h3>
+                    <p>Number users who follow this stock: {{ winner[1] }}</p>
+                </div>
+                {% endfor %} {% else %}
+                <p>No favorite stocks at the moment.</p>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="news-cards">
+            {% if news %}
+            <h2>Recent News</h2>
+            {% for news_item in news %}
+            <div class="card">
+                <h3>
+                    <a href="{{ news_item.url }}">{{ news_item.headline }}</a>
+                </h3>
+                <p>{{ news_item.sum }}</p>
+            </div>
+            {% endfor %} {% else %}
+            <p>No news at the moment.</p>
+            {% endif %}
+        </div>
+    </div>
+</form>
+
+<style>
+    body {
+        background-color: #f5f5f5;
+        color: #333;
+        font-family: Arial, sans-serif;
+    }
+
+    .header {
+        padding: 20px;
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid #e0e0e0;
+    }
+
+    .header .logo {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #1a73e8; /* Google's brand blue color */
+    }
+
+    .nav {
+        list-style-type: none;
+        padding-left: 0;
+    }
+    .card {
+        position: relative; /* add this line */
+        /* other styles */
+    }
+
+    .material-icons {
+        font-size: 18px;
+        color: #1a73e8;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+    }
+    .nav li {
+        display: inline;
+        margin-right: 20px;
+    }
+
+    .nav li a {
+        text-decoration: none;
+        color: #202124; /* Dark grey color */
+    }
+
+    .nav li a:hover {
+        color: #1a73e8; /* Google's brand blue color */
+    }
+
+    .content {
+        padding: 20px;
+    }
+
+    .card {
+        background-color: #fff;
+        box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3),
+            0 1px 3px 1px rgba(60, 64, 67, 0.15);
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 8px;
+    }
+
+    .winner-cards,
+    .news-cards {
+        margin-bottom: 30px;
+    }
+
+    h2 {
+        margin-bottom: 20px;
+        color: #202124; /* Dark grey color */
+    }
+</style>
+{% endblock %}

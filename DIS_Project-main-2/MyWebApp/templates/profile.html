@@ -1,0 +1,116 @@
+{% extends 'base.html' %} {% block title %} Changed {% endblock %} {% block
+content %}
+<br />
+<form
+    method="POST"
+    action="{{ url_for('search.searched') }}"
+    class="form-inline"
+>
+    <input
+        class="form-control mr-sm-2"
+        type="search"
+        placeholder="Search"
+        aria-label="Search"
+        name="searched"
+    />
+    <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">
+        Search
+    </button>
+</form>
+<h1>Stocks</h1>
+<div class="wrapper">
+    {% for stock in stocks %}
+    <div class="stock stock-item">
+        <h2>{{ stock[1] }}</h2>
+        <f>{{ stock[3] }}</f>
+        <p>Stock Value: ${{ stock[2] }}</p>
+        <p>Stock Volume: {{ stock[4] }}</p>
+        <button class="btn btn-secondary">add</button>
+        <!-- Add more stock information here -->
+    </div>
+    {% endfor %}
+</div>
+
+<style>
+    .wrapper {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        grid-auto-rows: minmax(100px, auto);
+        justify-items: center;
+    }
+    .button {
+        margin-top: 1px;
+        margin-bottom: 1px;
+        color: white;
+        background-color: #90d5ec;
+        border: none;
+        border-radius: 5px;
+        padding: 5px;
+    }
+    .search-bar {
+        width: 100%;
+        padding: 12px 20px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        margin-top: 10px;
+        box-shadow: 0 1px 1px rgba(200, 12, 0, 0.075) inset;
+        transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+    }
+
+    .stock {
+        width: 350px;
+        height: 150px;
+        border: 1px solid #ccc;
+        background-color: #eaeaea;
+        padding: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        box-shadow: 0 2px 6px rgba(0, 0, 4, 0.3);
+    }
+
+    h2 {
+        font-size: 16px;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+
+    p {
+        font-size: 14px;
+        margin-bottom: 5px;
+        text-align: center;
+    }
+
+    f {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 5px;
+        color: #90d5ec;
+        text-align: left;
+    }
+</style>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // Add click event listener to stock boxes
+        $(".stock-item").click(function () {
+            // Get the stock information from the clicked box
+            var stockName = $(this).find("h2").text();
+            var stockValue = $(this).find("p:eq(0)").text().split(": ")[1];
+            var stockVolume = $(this).find("p:eq(1)").text().split(": ")[1];
+
+            // Perform desired actions with the stock information
+            alert(
+                "Stock Name: " +
+                    stockName +
+                    "\nStock Value: " +
+                    stockValue +
+                    "\nStock Volume: " +
+                    stockVolume
+            );
+        });
+    });
+</script>
+{% endblock %}

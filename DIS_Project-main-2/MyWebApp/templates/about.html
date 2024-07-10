@@ -1,0 +1,39 @@
+{% extends 'base.html' %} {% block title %} History {% endblock %} {% block
+content %}
+<div class="container">
+    <form method="POST" class="form-card card">
+        <div class="header"></div>
+        <div class="card">
+            <div class="card-header">
+                <h3>About us</h3>
+            </div>
+            <text> 
+                This app is supposed to simulate a stock market website
+                such as <a href="https://finance.yahoo.com">yahoo finance</a>.
+                The app is made as a part of a university project. The app 
+                uses the flask library for python to work and run. Relevant data, 
+                such as stock data and news, is extracted from a local database. 
+                Features that could be improved, where it not for time constraints, 
+                would be a clear distinction between stocks you have "bought", and 
+                stocks you have put on your watchlist. Additionally, graphs that 
+                shows a stocks increase or decrease in value over time would be a 
+                great feature. 
+                <br><br>
+                The project was made by Jan Alexander Peter Johannsen (pqs846) and Asger Rendsmark (jkw944).
+                <br>
+                The source code can be found at our 
+                <a href="https://github.com/jkw944/DIS_Project">Github repository</a>.
+            </text>
+        </div>
+        <div class="chart-container">
+            <canvas id="stock-chart"></canvas>
+        </div>
+    </form>
+</div>
+
+{% endblock %} .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+.header { text-align: center; margin-bottom: 20px; } .card { background-color:
+#f8f9fa; border-radius: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); margin
+-bottom: 20px; } .card-header { background-color: #343a40; color: #fff; padding:
+10px 20px; border-top-left-radius: 10px; border-top-right-radius: 10px; }
+.card-body { padding: 20px; } .chart-container { height: 400px; }

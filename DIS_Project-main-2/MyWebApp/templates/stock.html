@@ -1,0 +1,155 @@
+{% extends 'base.html' %} {%block title%}Stock{%endblock%} 
+{%block content%}
+<form method="POST">
+    <div class = "header">
+        <h2 class ="logo"> Lil Stockzz <h2>
+        
+        <ul class = "nav">
+            <li><a href="">Watch List</a></li>
+            <li><a href="">New</a></li>
+            <li><a href="">About</a></li>
+          
+        </ul>
+    </div>
+    <style>
+        .header {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }  
+        .hero,
+        .about,
+        .services,
+        .contact {
+            max-width: 1000px;
+            margin: 0 auto;
+            margin-bottom: 20px;
+            }
+            .header {
+                padding: 0 70px;
+                display: flex;
+                align-content: center;
+                justify-content: space-between;
+                margin-top: 20px;
+                margin-bottom: 20px;
+              }
+          
+          .nav {
+                display: flex;
+                align-content: center;
+                justify-content: center;
+                gap: 60px;
+                list-style-type: none;
+              }
+          
+          .nav li a {
+                text-decoration: none;
+                color: black;
+                font-size: 1.2rem;
+              }
+      </style>
+      <div class="hero">
+        <h1><button type="button" class="btn nav-btn">Hero</button></h1>
+    </div>
+  <div class="about">
+        <h1>About Us</h1>
+  </div>
+  <div class="services">
+        <h1>Our Services</h1>
+  </div>
+  <div class="contact">
+        <h1>Contact Us</h1>
+  </div>
+  <div class="footer">
+        <p>&copy; 202 All Rights Reserved</p>
+  </div>
+  <style>
+    /* Add the 'nav-btn' class to the other buttons */
+    .nav li a, .nav-btn {
+        text-decoration: none;
+        color: black;
+        font-size: 1.2rem;
+    }
+    
+    /* Set the height of the 'nav-btn' class */
+    .nav-btn {
+        height: 40px;
+    }
+    
+    /* Remove the height from the 'hero' class */
+    .hero {
+        background-color: #eee;
+    }
+</style>
+  <style> 
+    .btn {
+      3display:block;
+      border: none;
+      color: white;
+      text-align: center;
+    }
+    .btn{
+      background-color: #eee;
+        height: 200px;
+    }
+    hero {
+        background-color: #eee;
+        height: 200px;
+      }
+  
+  .hero h1 {
+        3display:block;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        line-height: 6;
+      }
+  
+  .about {
+        background-color: #eee;
+        height: 200px;
+      }
+  
+  .about h1 {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        line-height: 6;
+      }
+  
+  .services {
+        background-color: #eee;
+        height: 200px;
+      }
+  
+  .services h1 {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        line-height: 6;
+      }
+  
+  .contact {
+        background-color: #eee;
+        height: 200px;
+      }
+  
+  .contact h1 {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        line-height: 6;
+      }
+  
+  .footer {
+        background-color: #777;
+        height: 40px;
+      }
+  
+  .footer p {
+        margin: 0 auto;
+        line-height: 1.7;
+      }
+  </style>
+</form>
+{%endblock%}
